@@ -13,8 +13,8 @@ input5 = rand([input_size 5]);
 
 % addpath ../pcode
 % Run inference to get intermediate activation sizes, and final out3put size
-[output1,act1] = inference_(model,input1);
-[output5,act5] = inference_(model,input5);
+[output1,act1] = inference(model,input1);
+[output5,act5] = inference(model,input5);
 
 network_output_size = size(output5);
 network_output_size = network_output_size(1:end-1);

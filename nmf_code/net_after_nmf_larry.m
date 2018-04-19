@@ -19,16 +19,16 @@ input = reshape(H10, feat_num, s0, s0, s2/s0/s0);
 input = reshape(input, s0, s0, feat_num, s2/s0/s0);    % new size = 6x6x80x256
 l = [
     init_layer('flatten',struct('num_dims',4))        
-    init_layer('linear',struct('num_in',s0*s0*feat_num,'num_out',2880))
+    init_layer('linear',struct('num_in',s0*s0*feat_num,'num_out',288))
     init_layer('tanh', []);
-    init_layer('linear',struct('num_in',2880,'num_out',10))
+    init_layer('linear',struct('num_in',288,'num_out',10))
 	init_layer('softmax',[])
     ];
 
 % Learning rate
-lr = 0.2;
+lr = 0.5;
 % Weight decay
-wd = .0001;
+wd = .001;
 % Batch size
 batch_size = 10;
 
