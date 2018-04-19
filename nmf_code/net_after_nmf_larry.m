@@ -19,14 +19,14 @@ input = reshape(H10, feat_num, s0, s0, s2/s0/s0);
 input = reshape(input, s0, s0, feat_num, s2/s0/s0);    % new size = 6x6x80x256
 l = [
     init_layer('flatten',struct('num_dims',4))        
-    init_layer('linear',struct('num_in',s0*s0*feat_num,'num_out',288))
+    init_layer('linear',struct('num_in',s0*s0*feat_num,'num_out',2880))
     init_layer('tanh', []);
-    init_layer('linear',struct('num_in',288,'num_out',10))
+    init_layer('linear',struct('num_in',2880,'num_out',10))
 	init_layer('softmax',[])
     ];
 
 % Learning rate
-lr = 0.5;
+lr = 0.2;
 % Weight decay
 wd = .001;
 % Batch size
@@ -43,7 +43,7 @@ params = struct('learning_rate',lr,'weight_decay',wd,'batch_size',batch_size,'sa
 
 numIters = size(input,4) / batch_size;
 
-max_epochs = 5;
+max_epochs = 10;
 
 % read label into var: label
 fid = fopen( 't10k-labels.idx1-ubyte', 'r' );

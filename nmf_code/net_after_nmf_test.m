@@ -8,7 +8,7 @@ nmf_param = file.nmf_param;
 
 batch_size = 256;
 
-i = 2;   % set of testing
+i = 1;   % set of testing
 
 % read data into var: data
 fid = fopen( 't10k-images.idx3-ubyte', 'r' );

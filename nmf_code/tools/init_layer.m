@@ -49,6 +49,8 @@ switch type
 		fn = @fn_relu;
     case 'tanh'
         fn = @fn_tanh;
+    case 'sigmoid'
+        fn = @fn_sigmoid;
 end
 
 layer = struct('fwd_fn', fn, 'type', type, 'params', params, 'hyper_params', info);
