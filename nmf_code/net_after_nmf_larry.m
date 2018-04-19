@@ -18,13 +18,10 @@ feat_num = 80;
 input = reshape(H10, feat_num, s0, s0, s2/s0/s0); 
 input = reshape(input, s0, s0, feat_num, s2/s0/s0);    % new size = 6x6x80x256
 l = [
-    init_layer('flatten',struct('num_dims',4))    
-%     init_layer('linear',struct('num_in',s0*s0*feat_num,'num_out',10))
-    
+    init_layer('flatten',struct('num_dims',4))        
     init_layer('linear',struct('num_in',s0*s0*feat_num,'num_out',2880))
-    
+    init_layer('tanh', []);
     init_layer('linear',struct('num_in',2880,'num_out',10))
-    
 	init_layer('softmax',[])
     ];
 

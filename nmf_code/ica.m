@@ -37,14 +37,23 @@ disp('Expanding Images to 3x3 Patch');
 V = expand3x3(short_data);
 [len,~,~] = size(V);
 V = reshape(V,len,9);
-V = V + (V < 0.95) * 1e-3;
 
-[icasig, A, W] = ica_step(V,26,20);
+disp('ICA Optimizing Step 1')
+[icasig1, A1, W1, tmp1] = ica_step(V,26,20);
     
-disp(size(A));
-disp(size(W));
-disp(size(icasig));
+disp(size(A1));
+disp(size(W1));
+disp(size(icasig1));
+tmp11 = A1 * icasig1;
+tmp12 = W1' * icasig1;
+disp(size(tmp1));
+disp(size(tmp11));
+disp(size(tmp12));
 
+disp('ICA Optimizing Step 1')
+[icasig2, A2, W2, tmp2] = ica_step(icasig1',24,20);
+tmp21 = A2 * icasig2;
+tmp22 = W2' * icasig2;
 % disp('NNMF Optimizing Step 1')
 % [W1,H1] = nmf_step(V,26,20);
 % disp('NNMF Optimizing Step 2')

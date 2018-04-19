@@ -47,6 +47,8 @@ switch type
 		fn = @fn_flatten;
 	case 'relu'
 		fn = @fn_relu;
+    case 'tanh'
+        fn = @fn_tanh;
 end
 
 layer = struct('fwd_fn', fn, 'type', type, 'params', params, 'hyper_params', info);
